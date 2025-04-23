@@ -1,0 +1,37 @@
+<!-- pages/login/login.wxml -->
+<view class="container">
+  <view class="login-box">
+  <view>
+  姓名：吴宏昊
+  班级：软件225班
+  学号：202200406213
+  </view>
+    <view class="form-group">
+      <input 
+        class="input" 
+        placeholder="用户名" 
+        placeholder-class="placeholder" 
+        bindinput="getUsername"
+      />
+      <input 
+        class="input" 
+        placeholder="密码" 
+        password 
+        placeholder-class="placeholder" 
+        bindinput="getPassword"
+      />
+    </view>
+    
+    <button 
+      class="login-btn" 
+      bindtap="login" 
+      loading="{{loading}}"
+      hover-class="none"
+    >{{loading ? '登录中...' : '立即登录'}}</button>
+    
+    <view class="links">
+      <navigator url="../register/register" class="link">没有账号？立即注册</navigator>
+      <navigator url="../forgot/forgot" class="link">忘记密码？</navigator>
+    </view>
+  </view>
+</view>

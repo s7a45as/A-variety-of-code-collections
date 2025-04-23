@@ -1,0 +1,44 @@
+# 使用Java 8基础镜像
+FROM openjdk:8-jre-slim
+
+# 设置工作目录
+WORKDIR /app
+
+# 设置时区为中国时区
+ENV TZ=Asia/Shanghai
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# 设置JVM参数 - 针对Java 8优化
+ENV JAVA_OPTS="\
+    -server \
+    -Xms512m \
+    -Xmx512m \
+    -Xmn256m \
+    -XX:PermSize=128m \
+    -XX:MaxPermSize=256m \
+    -XX:+UseParallelGC \
+    -XX:+UseParallelOldGC \
+    -XX:+PrintGCDetails \
+    -XX:+PrintGCTimeStamps \
+    -XX:+PrintGCDateStamps \
+    -XX:+HeapDumpOnOutOfMemoryError \
+    -XX:HeapDumpPath=/app/logs/heap-dump.hprof \
+    -Xloggc:/app/logs/gc.log"
+
+# 创建日志目录并设置权限
+RUN mkdir -p /app/logs && \
+    chmod -R 777 /app/logs
+
+# 复制jar包到容器中
+COPY app.jar app.jar
+
+# 暴露端口
+EXPOSE 8080
+
+# 创建启动脚本
+RUN echo '#!/bin/sh\n\
+java $JAVA_OPTS -jar app.jar $@' > /app/start.sh && \
+    chmod +x /app/start.sh
+
+# 设置容器启动命令
+ENTRYPOINT ["/app/start.sh"] 

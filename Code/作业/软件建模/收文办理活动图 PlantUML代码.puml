@@ -1,0 +1,26 @@
+@startuml
+start
+:登记来文;
+:录入信息;
+
+repeat :提交审核;
+if (审核通过？) then (是)
+else (否)
+  :修正信息;
+  detach
+endif
+repeat while (审核未通过?)
+
+repeat :提交拟办;
+if (审批通过？) then (是)
+else (否)
+  :调整拟办;
+  detach
+endif
+repeat while (审批未通过?)
+
+:批办处理;
+:承办执行;
+:存档;
+stop
+@enduml

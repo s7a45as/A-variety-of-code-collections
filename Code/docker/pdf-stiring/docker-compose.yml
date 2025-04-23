@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  stirling-pdf:
+    image: registry.cn-hangzhou.aliyuncs.com/jeson/s-pdf:0.26.1-fat
+    container_name: Stirling-PDF
+    ports:
+      - '9080:8080'
+    volumes:
+      - /data/stirling/trainingData:/usr/share/tessdata
+      - /data/stirling/extraConfigs:/configs
+      - /data/stirling/customFiles:/customFiles/
+      - /data/stirling/logs:/logs/
+    environment:
+      DOCKER_ENABLE_SECURITY: true   
+      SECURITY_ENABLELOGIN: true    
+      SECURITY_INITIALLOGIN_USERNAME: admin
+      SECURITY_INITIALLOGIN_PASSWORD: admin    
+      UI_APPNAME: jeven-PDF    
+      INSTALL_BOOK_AND_ADVANCED_HTML_OPS: false
+      LANGS: zh_CN

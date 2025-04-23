@@ -1,0 +1,23 @@
+/* pages/index/index.wxss */
+/* 1 卡片区域 */
+.card{
+  margin-top: 100rpx;/* 外边距上方 */
+}
+
+/* 1-1 卡片顶部图 */
+.card image{
+  width: 100%; /* 宽度自适应 */
+}
+
+/* 1-2 专题名称 */
+.card text{
+  font-size: 46rpx;  /* 字体大小 */
+  margin: 40rpx 0;  /* 外边距上下均为40rpx，左右0 */
+}
+/* 自定义卡片组件 */
+.custom-card {
+  width: 88%; /* 原宽度假设值 */
+  /* 修改为 */
+  width: 92%;
+  margin: 30rpx auto; /* 增加垂直间距保持呼吸感 */
+}

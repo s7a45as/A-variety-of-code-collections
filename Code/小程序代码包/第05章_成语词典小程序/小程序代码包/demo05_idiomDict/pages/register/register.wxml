@@ -1,0 +1,49 @@
+<view class="container">
+<!-- 在container内最前面添加 -->
+<view class="bubble-bg">
+  <view 
+    wx:for="{{bubbles}}" 
+    wx:key="index"
+    class="bubble"
+    style="width: {{item.size}}rpx; height: {{item.size}}rpx; left: {{item.left}}rpx; animation-delay: {{item.delay}}s; animation-duration: {{item.duration}}s"
+  ></view>
+</view>
+  <view class="header">
+    <view>
+  姓名：吴宏昊
+  班级：软件225班
+  学号：202200406213
+  </view>
+  </view>
+
+  <form bindsubmit="formSubmit">
+    <view class="input-group">
+      <!-- 修改后的 input 示例 -->
+      <input name="username" data-field="username" placeholder="请输入用户名" placeholder-class="placeholder" bindinput="checkInput" />
+      <image class="icon" src="/icons/user.png" />
+    </view>
+
+    <view class="input-group">
+      <input name="password" password placeholder="请输入密码" 
+      data-field="password"
+      placeholder-class="placeholder" bindinput="checkInput" />
+      <image class="icon" src="/icons/lock.png" />
+    </view>
+
+    <view class="input-group">
+      <input name="confirmPwd" password placeholder="确认密码" 
+      data-field="confirmPwd"
+      placeholder-class="placeholder" bindinput="checkInput" />
+      <image class="icon" src="/icons/lock.png" />
+    </view>
+
+    <button class="register-btn" form-type="submit" >
+      立即注册
+    </button>
+  </form>
+
+  <view class="footer">
+    <text>已有账号？</text>
+    <navigator url="/pages/login/login" class="link">立即登录</navigator>
+  </view>
+</view>

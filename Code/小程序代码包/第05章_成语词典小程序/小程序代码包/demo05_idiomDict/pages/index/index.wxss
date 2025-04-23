@@ -1,0 +1,125 @@
+/* 整体容器 */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  padding: 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 仿古纹背景装饰 */
+.container::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background-image: url('data:image/png;base64,iVBORw0KG...'); /* 云纹图案base64 */
+  opacity: 0.1;
+  animation: bgRotate 20s linear infinite;
+}
+
+/* 顶部标题 */
+.title {
+  font-size: 48rpx;
+  color: #fff;
+  text-align: center;
+  padding: 40rpx 0;
+  text-shadow: 0 4rpx 8rpx rgba(0,0,0,0.3);
+  position: relative;
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: titleFloat 2s ease-in-out infinite alternate;
+}
+
+/* 查询表单 */
+form {
+  position: relative;
+  z-index: 1;
+  margin: 60rpx 0;
+  filter: drop-shadow(0 10rpx 20rpx rgba(0,0,0,0.2));
+}
+
+/* 输入框 */
+input {
+  height: 100rpx;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50rpx;
+  padding: 0 40rpx;
+  font-size: 32rpx;
+  border: 4rpx solid #fff;
+  transition: all 0.3s;
+}
+
+input:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 30rpx rgba(255,215,0,0.5);
+}
+
+/* 查询按钮 */
+button {
+  margin-top: 40rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 36rpx;
+  letter-spacing: 4rpx;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+}
+
+button::after {
+  content: "🔍";
+  position: absolute;
+  right: 30rpx;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:hover::after {
+  opacity: 1;
+  right: 40rpx;
+}
+
+/* 查询结果 */
+.result {
+  background: rgba(255,255,255,0.9);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  backdrop-filter: blur(10rpx);
+  border: 2rpx solid rgba(255,255,255,0.3);
+  box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.1);
+}
+
+.result view {
+  font-size: 32rpx;
+  line-height: 1.6;
+  padding: 20rpx 0;
+  border-bottom: 2rpx dashed #eee;
+  position: relative;
+}
+
+.result view::before {
+  content: "✨";
+  margin-right: 15rpx;
+}
+
+/* 动画定义 */
+@keyframes titleFloat {
+  from { transform: translateY(-8rpx); }
+  to { transform: translateY(8rpx); }
+}
+
+@keyframes bgRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

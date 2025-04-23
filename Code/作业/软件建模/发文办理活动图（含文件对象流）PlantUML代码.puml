@@ -1,0 +1,45 @@
+@startuml
+start
+:草拟文档;
+note right #aliceblue
+    文件状态：
+ 草稿文件
+end note
+
+repeat
+  :提交审核;
+  ->(待审核文件);
+
+  if (审核通过？) then (是)
+    ->(已审核文件);
+  else (否)
+    :退回修改;
+    ->(草稿文件);
+    detach
+  endif
+repeat while (审核未通过?)
+
+repeat
+  :提交复核;
+  ->(待复核文件);
+
+  if (复核通过？) then (是)
+    ->(已复核文件);
+  else (否)
+    :退回审核;
+    ->(待审核文件);
+    detach
+  endif
+repeat while (复核未通过?)
+
+:签发文档;
+->(已签发文件);
+
+:分发文档;
+->(已分发文件);
+
+:存档;
+->(存档文件);
+
+stop
+@enduml

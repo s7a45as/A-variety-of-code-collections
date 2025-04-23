@@ -1,0 +1,31 @@
+<!--pages/result/result.wxml-->
+<!-- 整体容器 -->
+<view class="container flexV alignCenter">
+  <!-- 2 垂直滑动容器 -->
+  <scroll-view scroll-y>
+    <!-- 3 内容明细 -->
+    <view class="detailBox flexV alignCenter">
+      <!-- 4 标题 -->
+      <text class="title">结果解析</text>
+      <!-- 5 题目与解析 -->
+      <view class="card flexV" wx:for="{{rsBank}}" wx:key="id">
+        <!-- 5-1 题目 -->
+        <text>{{item.id}}.{{item.question}}</text>
+        <!-- 5-2 解析 -->
+        <text>{{item.analysis}}</text>
+      </view>
+
+      <!-- 6 按钮 -->
+      <button class="colorBtn" bindtap="goToHome">返回首页</button>
+    </view>
+  </scroll-view>
+  <custom-card 
+  avatar="{{userInfo.avatar}}"
+  title="{{userInfo.name}}"
+  subtitle="{{userInfo.class}}"
+  studentid="{{userInfo.studentId}}"
+  shadow="{{true}}"
+  bind:cardtap="handleCardTap">
+</custom-card>
+</view>
+

@@ -1,0 +1,14 @@
+<!-- 卡片容器 -->
+<view class="custom-card {{shadow ? 'card-shadow' : ''}}" bindtap="onTap">
+  <!-- 头像区域 -->
+  <view class="avatar-section">
+    <image src="{{avatar}}" mode="aspectFill" class="avatar-img" />
+  </view>
+  
+  <!-- 内容区域 -->
+  <view class="content-section">
+    <text class="title">{{title}}</text>
+    <text class="subtitle" wx:if="{{subtitle}}">{{subtitle}}</text>
+    <text class="studentid" wx:if="{{studentid}}">{{studentid}}</text>
+  </view>
+</view>

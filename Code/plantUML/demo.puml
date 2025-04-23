@@ -1,0 +1,72 @@
+@startuml
+enum PositionType {
+    GUARD
+    FORWARD
+    CENTER
+}
+
+enum GameType {
+    PROFESSIONAL
+    INTERNATIONAL
+}
+
+class Game {
+    - currentTime: int
+    - remainingTime: int
+    - shotClock: int
+    - homeTeam: Team
+    - awayTeam: Team
+    - rules: GameRule
+    - court: Court
+    - referees: List<Referee>
+    + startGame()
+    + pauseGame()
+    + handleScore(points: int)
+    + handleFoul(player: Player)
+}
+
+class Team {
+    - name: String
+    - players: List<Player>
+    - totalScore: int
+    + addPlayer(player: Player)
+    + updateScore(points: int)
+}
+
+class Player {
+    - name: String
+    - height: float
+    - position: PositionType
+    + dribble()
+    + passBall()
+    + shoot()
+    + rebound()
+}
+
+class GameRule {
+    - gameType: GameType
+    - shotClockDuration: int
+    - totalDuration: int
+    - periodCount: int
+    - periodDuration: int
+}
+
+class Court {
+    - length: float
+    - width: float
+    - basketHeight: float
+}
+
+class Referee {
+    - name: String
+    + callFoul(player: Player)
+}
+
+Game "1" o-- "2" Team : contains >
+Team "1" *-- "5" Player : consists of >
+Game --> GameRule : uses
+Game --> Court : has
+Game --> "1..*" Referee : has
+Player --> PositionType : position
+GameRule --> GameType : type
+@enduml

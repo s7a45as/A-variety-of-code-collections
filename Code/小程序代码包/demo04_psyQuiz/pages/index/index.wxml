@@ -1,0 +1,24 @@
+<!--pages/index/index.wxml-->
+<!-- 1 整体容器 -->
+<view class="container flexV alignCenter">
+  <!-- 2 卡片区域 -->
+  <view class="card flexV alignCenter">
+    <!-- 2-1 卡片顶部图片 -->
+    <image src="/images/banner.png" mode="widthFix"></image>
+    <!-- 2-2 专题名称 -->
+    <text>趣味心理测试</text>
+    <!-- 2-3 按钮 -->
+    <button class="colorBtn" bindtap="goToQuiz">开始测试</button>
+  </view>
+<!-- 在卡片区域下方添加 -->
+
+<custom-card 
+  avatar="{{userInfo.avatar}}"
+  title="{{userInfo.name}}"
+  subtitle="{{userInfo.class}}"
+  studentid="{{userInfo.studentId}}"
+  shadow="{{true}}"
+  bind:cardtap="handleCardTap">
+</custom-card>
+
+</view>

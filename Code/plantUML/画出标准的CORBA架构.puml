@@ -1,0 +1,29 @@
+@startuml
+package "CORBA架构" {
+    [客户端程序] as Client
+    [ORB核心] as ORB
+    [IDL存根] as Stub
+    [动态调用接口] as DII
+    [命名服务] as Naming
+    [接口仓库] as InterfaceRepo
+    [实现仓库] as ImplRepo
+
+    [服务端程序] as Server
+    [IDL骨架] as Skeleton
+    [对象适配器] as POA
+    [业务对象实现] as BusinessObject
+
+    Client --> Stub : 静态调用
+    Client --> DII : 动态调用
+    Stub --> ORB : 编组请求
+    DII --> ORB : 动态请求
+    ORB --> Naming : 对象定位
+    ORB --> InterfaceRepo : 接口查询
+    ORB --> ImplRepo : 实现查询
+
+    ORB --> Skeleton : 请求分发
+    Skeleton --> POA : 对象激活
+    POA --> BusinessObject : 方法调用
+    BusinessObject --> POA : 返回结果
+}
+@enduml

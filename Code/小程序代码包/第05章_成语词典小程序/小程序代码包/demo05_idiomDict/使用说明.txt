@@ -1,0 +1,2 @@
+需要用phpstudy_pro开启WAMP或WNMP服务，在服务器的根目录WWW下将配套的searchWord.php文件放在其中。
+*注：searchWord.php文件见“服务器端素材”目录下的“php接口文件参考”。

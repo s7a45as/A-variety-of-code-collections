@@ -1,0 +1,28 @@
+@startuml
+class Hello.idl {
+    + module Hello
+    + interface Greeting
+    + sayHello()
+}
+
+package "服务端" {
+    class GreetingImpl {
+        + sayHello()
+    }
+    class Server {
+        + main()
+    }
+}
+
+package "客户端" {
+    class Client {
+        + main()
+    }
+}
+
+Hello.idl --> Server : 生成骨架
+Hello.idl --> Client : 生成存根
+Server --> ORB : 注册对象
+Client --> ORB : 查找对象
+Client --> GreetingImpl : 远程调用
+@enduml

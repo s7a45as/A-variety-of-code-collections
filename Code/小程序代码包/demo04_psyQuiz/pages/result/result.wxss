@@ -1,0 +1,18 @@
+/* pages/result/result.wxss */
+/* 1 内容明细 */
+.detailBox{
+  width: 100%;
+  min-height: 100vh;
+}
+/* 2 标题 */
+.title{
+  font-size: 50rpx;
+  font-weight: bold;
+  color: #F8CE3A;
+  margin-top: 30rpx;
+}
+
+/* 3 按钮 */
+button{
+  margin: 50rpx 0;
+}

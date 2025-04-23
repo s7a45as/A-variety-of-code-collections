@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "注册账号",
+  "navigationBarBackgroundColor": "#6A5ACD",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": false
+}

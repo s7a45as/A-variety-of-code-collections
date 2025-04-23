@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql8:3306/question_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  thymeleaf:
+    cache: false # 关闭缓存，方便开发时调试
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+minio:
+#  endpoint: http://192.168.88.88:9000/
+  endpoint: http://192.168.88.88:9000/
+  accessKey: rVtgVoXHEzJdwf0Zf3p3
+  secretKey: H8arW0q6Simqbo9wHjCMcdXLQcwQThnAWLXKWKF4
+  bucketName: question
+

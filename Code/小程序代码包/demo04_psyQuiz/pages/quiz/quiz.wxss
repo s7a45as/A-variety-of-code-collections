@@ -1,0 +1,11 @@
+/**index.wxss**/
+/* 1 题目编号区域 */
+.quizNum{
+  border-left: 20rpx solid #F8CE3A;/* 左侧边框 */
+  padding-left: 10rpx;/* 内边距左侧 */
+  margin-bottom: 20rpx;
+}
+/* 2 底部按钮 */
+button{
+  margin: 50rpx;
+}

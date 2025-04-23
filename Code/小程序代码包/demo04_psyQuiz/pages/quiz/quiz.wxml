@@ -1,0 +1,38 @@
+<!--pages/quiz/quiz.wxml-->
+<!-- 1 整体容器 -->
+<view class="container flexV alignCenter">
+  <!-- 2 垂直滑动容器 -->
+  <scroll-view scroll-y>
+    <!-- 3 表单 -->
+    <form class="flexV alignCenter" bindsubmit="onSubmit">
+      <!-- 4 题目卡片 -->
+      <view class="card flexV" wx:for="{{qBank}}" wx:key="id" wx:for-item="oneQuiz">
+        <!-- 4-1 题目编号区域 -->
+        <text class="quizNum">第{{index+1}}题</text>
+        <!-- 4-2 题干（问题描述） -->
+        <text>{{oneQuiz.question}}</text>
+
+        <!-- 4-3 单选题选项 -->
+        <radio-group class="flexV" name="quiz{{index+1}}">
+          <radio color="#F8CE3A" wx:for="{{oneQuiz.options}}" wx:key="value" value="{{item.value}}">
+            {{item.text}}</radio>
+        </radio-group>
+      </view>
+
+      <!-- 5 查看结果按钮 -->
+      <button class="colorBtn" form-type="submit">查看解析</button>
+    </form>
+    
+    <custom-card 
+  avatar="{{userInfo.avatar}}"
+  title="{{userInfo.name}}"
+  subtitle="{{userInfo.class}}"
+  studentid="{{userInfo.studentId}}"
+  shadow="{{true}}"
+  bind:cardtap="handleCardTap">
+</custom-card>
+
+
+  </scroll-view>
+</view>
+

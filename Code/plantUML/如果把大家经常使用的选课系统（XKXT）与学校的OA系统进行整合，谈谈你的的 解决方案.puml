@@ -1,0 +1,29 @@
+@startuml
+title XKXT与OA系统整合架构
+
+component "XKXT选课系统" as XKXT {
+    [Spring Boot API] --> [选课数据库]
+}
+
+component "OA系统" as OA {
+    [RESTful API] --> [审批流程引擎]
+}
+
+component "API网关" as Gateway {
+    [协议转换] --> [OAuth2认证]
+    [MQTT/HTTP路由]
+}
+
+database "共享数据中心" as DataHub {
+    [学生信息]
+    [课程审批记录]
+    [学分同步队列]
+}
+
+XKXT --> Gateway : 发布选课事件（JSON）
+OA --> Gateway : 订阅审批事件（XML）
+Gateway --> DataHub : 标准化数据存储
+DataHub --> OA : 触发考核流程
+DataHub --> XKXT : 回写审批状态
+
+@enduml

@@ -1,0 +1,1 @@
+DATABASE_URI = "mysql+pymysql://root:123456@192.168.233.10:3306/job-postings"

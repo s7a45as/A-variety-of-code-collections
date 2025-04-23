@@ -1,0 +1,39 @@
+@startuml
+skinparam backgroundColor #EEE
+title 顾客购买饮料（金额不足）[1](@ref)
+
+actor 顾客
+participant 前端 as Front
+participant 钱币记录仪 as Register
+participant 分配器 as Dispenser
+
+autonumber
+
+顾客 -> Front: 投入硬币(inputMoney)
+activate Front #LightBlue
+Front -> Register: 接收现钞(accept)
+activate Register
+Register --> Front: 金额更新确认
+Front -> 顾客: 显示金额(displayPrompt)
+
+顾客 -> Front: 选择饮料(chooseSoda)
+Front -> Dispenser: 发送选择(sendChooseToDis)
+activate Dispenser
+Dispenser -> Dispenser: 检查库存(checkAvailability)
+Dispenser --> Front: 库存充足
+deactivate Dispenser
+
+Front -> Register: 验证金额(checkForChange)
+Register -> Register: 金额计算
+alt 金额不足[1](@ref)
+    activate Register #Pink
+    Register --> Front: 返回"User correct change"
+    Front -> Front: 显示错误信息(displayPrompt)
+    Front -> Register: 退币请求(returnCashToFront)
+    Register -> Front: 返还现金
+    Front -> 顾客: 退还硬币(returnCash)
+end
+
+deactivate Register
+deactivate Front
+@enduml

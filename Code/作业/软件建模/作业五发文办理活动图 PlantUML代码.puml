@@ -1,0 +1,25 @@
+@startuml
+start
+:草拟文档;
+
+repeat :提交审核;
+if (审核通过？) then (是)
+else (否)
+  :退回修改;
+  detach
+endif
+repeat while (审核未通过?)
+
+repeat :提交复核;
+if (复核通过？) then (是)
+else (否)
+  :退回审核;
+  detach
+endif
+repeat while (复核未通过?)
+
+:签发文档;
+:分发文档;
+:存档;
+stop
+@enduml

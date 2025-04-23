@@ -1,0 +1,150 @@
+/* pages/register/register.wxss */
+.container {
+  height: 100vh;
+  background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* 动态背景动画（参考网页16） */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.header {
+  padding: 40rpx;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  margin: 40rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 30rpx rgba(255,255,255,0.2);
+  color: #fff;
+  text-shadow: 0 0 10rpx rgba(0,0,0,0.3);
+  transform: rotate(-1deg);
+}
+
+.input-group {
+  margin: 40rpx;
+  position: relative;
+}
+
+input {
+  height: 100rpx;
+  padding: 0 100rpx 0 30rpx;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50rpx;
+  color: #fff;
+  font-size: 32rpx;
+  transition: all 0.3s;
+  border: 2rpx solid transparent;
+}
+
+/* 输入框聚焦特效（参考网页23） */
+input:focus {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 0 20rpx rgba(255,255,255,0.2);
+}
+
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 40rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s;
+}
+
+/* 图标悬浮动画（参考网页28） */
+.icon:hover {
+  transform: translateY(-50%) scale(1.2);
+  filter: drop-shadow(0 0 10rpx #fff);
+}
+
+.register-btn {
+  height: 100rpx;
+  line-height: 100rpx;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 50rpx;
+  margin: 60rpx 40rpx;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+/* 呼吸灯按钮（参考网页17） */
+.register-btn::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255,255,255,0.3) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  animation: btnGlow 3s infinite;
+}
+
+@keyframes btnGlow {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  color: rgba(255,255,255,0.8);
+}
+
+.link {
+  color: #4ecdc4;
+  position: relative;
+  margin-left: 20rpx;
+}
+
+/* 链接悬浮特效（参考网页6） */
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2rpx;
+  background: #4ecdc4;
+  transition: all 0.3s;
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+/* 新增动态粒子背景（参考网页4） */
+.bubble-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  animation: float 8s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(0.5); }
+  50% { transform: translateY(-100vh) scale(1.2); }
+  100% { transform: translateY(-200vh) scale(0.8); }
+}

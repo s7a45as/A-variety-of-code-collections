@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<!-- 1 整体容器 -->
+<view class="container">
+	<!-- 2 顶部标题 -->
+	<view class="title">欢迎使用简易成语小词典</view>
+
+	<!-- 3 查询表单 -->
+	<form bindsubmit="search">
+		<!-- 3-1 文本输入框 -->
+		<input name="idiom" placeholder="请输入要查的成语"></input>
+		<!-- 3-2 按钮 -->
+		<button form-type="submit">查找</button>
+	</form>
+
+	<!-- 4 查询结果 -->
+	<view class="result">
+		<block wx:if="{{result!=''}}">
+			<view hidden="{{result.spell==null}}">·拼音：{{result.spell}}</view>
+			<view hidden="{{result.content==null}}">·基本释义：{{result.content}}</view>
+			<view hidden="{{result.derivation==null}}">·出处：{{result.derivation}}</view>
+			<view hidden="{{result.samples==null}}">·例句：{{result.samples}}</view>
+		</block>
+		<view wx:else>{{tip}}</view>
+	</view>
+</view>
+

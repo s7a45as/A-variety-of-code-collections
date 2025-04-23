@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pls.PLM.dao.YuketangDao">
+
+    <resultMap type="com.pls.PLM.domain.entity.Yuketang" id="YuketangMap">
+        <result property="id" column="_id" jdbcType="INTEGER"/>
+        <result property="param2Text" column="param2_text" jdbcType="VARCHAR"/>
+        <result property="param3Text" column="param3_text" jdbcType="VARCHAR"/>
+        <result property="param4Text" column="param4_text" jdbcType="VARCHAR"/>
+        <result property="param5Text" column="param5_text" jdbcType="VARCHAR"/>
+        <result property="param6Text" column="param6_text" jdbcType="VARCHAR"/>
+        <result property="param7Text" column="param7_text" jdbcType="VARCHAR"/>
+        <result property="param8Text" column="param8_text" jdbcType="VARCHAR"/>
+        <result property="param9Text" column="param9_text" jdbcType="VARCHAR"/>
+        <result property="param10Text" column="param10_text" jdbcType="VARCHAR"/>
+        <result property="param11Text" column="param11_text" jdbcType="VARCHAR"/>
+        <result property="param12Text" column="param12_text" jdbcType="VARCHAR"/>
+        <result property="param13Text" column="param13_text" jdbcType="VARCHAR"/>
+        <result property="param14Text" column="param14_text" jdbcType="VARCHAR"/>
+        <result property="param15Text" column="param15_text" jdbcType="VARCHAR"/>
+        <result property="param16Text" column="param16_text" jdbcType="VARCHAR"/>
+        <result property="param17Text" column="param17_text" jdbcType="VARCHAR"/>
+        <result property="param18Text" column="param18_text" jdbcType="VARCHAR"/>
+        <result property="param19Text" column="param19_text" jdbcType="VARCHAR"/>
+        <result property="param20Text" column="param20_text" jdbcType="VARCHAR"/>
+        <result property="param21Text" column="param21_text" jdbcType="VARCHAR"/>
+        <result property="param22Text" column="param22_text" jdbcType="VARCHAR"/>
+        <result property="param23Text" column="param23_text" jdbcType="VARCHAR"/>
+        <result property="param24Text" column="param24_text" jdbcType="VARCHAR"/>
+        <result property="param25Text" column="param25_text" jdbcType="VARCHAR"/>
+        <result property="param26Text" column="param26_text" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="Id" useGeneratedKeys="true">
+        insert into question_db.yuketang(param2_text, param3_text, param4_text, param5_text, param6_text, param7_text,
+        param8_text, param9_text, param10_text, param11_text, param12_text, param13_text, param14_text, param15_text,
+        param16_text, param17_text, param18_text, param19_text, param20_text, param21_text, param22_text, param23_text,
+        param24_text, param25_text, param26_text)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.param2Text}, #{entity.param3Text}, #{entity.param4Text}, #{entity.param5Text},
+            #{entity.param6Text}, #{entity.param7Text}, #{entity.param8Text}, #{entity.param9Text},
+            #{entity.param10Text}, #{entity.param11Text}, #{entity.param12Text}, #{entity.param13Text},
+            #{entity.param14Text}, #{entity.param15Text}, #{entity.param16Text}, #{entity.param17Text},
+            #{entity.param18Text}, #{entity.param19Text}, #{entity.param20Text}, #{entity.param21Text},
+            #{entity.param22Text}, #{entity.param23Text}, #{entity.param24Text}, #{entity.param25Text},
+            #{entity.param26Text})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="Id" useGeneratedKeys="true">
+        insert into question_db.yuketang(param2_text, param3_text, param4_text, param5_text, param6_text, param7_text,
+        param8_text, param9_text, param10_text, param11_text, param12_text, param13_text, param14_text, param15_text,
+        param16_text, param17_text, param18_text, param19_text, param20_text, param21_text, param22_text, param23_text,
+        param24_text, param25_text, param26_text)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.param2Text}, #{entity.param3Text}, #{entity.param4Text}, #{entity.param5Text},
+            #{entity.param6Text}, #{entity.param7Text}, #{entity.param8Text}, #{entity.param9Text},
+            #{entity.param10Text}, #{entity.param11Text}, #{entity.param12Text}, #{entity.param13Text},
+            #{entity.param14Text}, #{entity.param15Text}, #{entity.param16Text}, #{entity.param17Text},
+            #{entity.param18Text}, #{entity.param19Text}, #{entity.param20Text}, #{entity.param21Text},
+            #{entity.param22Text}, #{entity.param23Text}, #{entity.param24Text}, #{entity.param25Text},
+            #{entity.param26Text})
+        </foreach>
+        on duplicate key update
+        param2_text = values(param2_text) , param3_text = values(param3_text) , param4_text = values(param4_text) ,
+        param5_text = values(param5_text) , param6_text = values(param6_text) , param7_text = values(param7_text) ,
+        param8_text = values(param8_text) , param9_text = values(param9_text) , param10_text = values(param10_text) ,
+        param11_text = values(param11_text) , param12_text = values(param12_text) , param13_text = values(param13_text)
+        , param14_text = values(param14_text) , param15_text = values(param15_text) , param16_text =
+        values(param16_text) , param17_text = values(param17_text) , param18_text = values(param18_text) , param19_text
+        = values(param19_text) , param20_text = values(param20_text) , param21_text = values(param21_text) ,
+        param22_text = values(param22_text) , param23_text = values(param23_text) , param24_text = values(param24_text)
+        , param25_text = values(param25_text) , param26_text = values(param26_text)
+    </insert>
+
+</mapper>
+
