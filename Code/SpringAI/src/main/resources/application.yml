@@ -1,0 +1,32 @@
+server:
+  port: 8080
+logging:
+  level:
+    cn.javastack.springboot.ai: DEBUG
+spring:
+  ai:
+    openai:
+      api-key: "sk-8396dbe5b8c54fa6b76a337146ece1be" # 安全起见，从系统环境变量读取
+      base-url: https://api.deepseek.com
+      chat:
+        options:
+          model: deepseek-chat
+          temperature: 0.5
+    tongyi:
+      api-key: "sk-5b8247dc79a44154a09d90b9d314158e"
+      base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      chat:
+        options:
+          model: qwen-plus
+    xunfei:
+      client:
+        appid: ea6b07ef
+        apiSecret: Y2E3MTdlYTkxNWM3OGJhZjg1YzU3MDIy
+        apiKey: 988bde4367708efaaa60511b37cdb6a0
+
+#    mcp:
+#      client:
+#        stdio:
+#          servers-configuration: classpath:mcp-servers-config.json
+#        toolcallback:
+#          enabled: true
